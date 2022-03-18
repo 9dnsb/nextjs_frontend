@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --fix --ext .js,.ts,.tsx ./ --ignore-path .gitignore",
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "validate": "npm-run-all --parallel check-types && lint-staged",
     "prepare": "husky install"
@@ -72,7 +72,7 @@
   },
   "lint-staged": {
     "*.+(ts|tsx)": [
-      "npm lint"
+      "npm run lint"
     ]
   }
 }
