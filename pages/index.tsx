@@ -1,5 +1,7 @@
+import Test from '../components/Test'
+
 function Home() {
-  return <h1>Testing</h1>
+  return <Test />
 }
 
 export default Home
