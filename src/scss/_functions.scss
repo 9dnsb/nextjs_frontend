@@ -1,0 +1,15 @@
+@use 'colors';
+
+@function text($bg) {
+  @if (lightness($bg) > 50) {
+    @return colors.$darkColor;
+  } @else {
+    @return colors.$lightColor;
+  }
+}
+
+@mixin dc($color) {
+  // dc is short for dynamic color
+  background: $color;
+  color: text($color);
+}

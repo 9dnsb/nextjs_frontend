@@ -1,0 +1,77 @@
+@use '../../scss/colors';
+@use '../../scss/functions';
+
+#navBarSmall {
+  height: 50px;
+  display: flex;
+  background-color: colors.$sideMenuBackground;
+  padding: 8px 12px;
+
+  #menuButton {
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: colors.$menuHover;
+    }
+  }
+}
+
+#sideNav {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  font-family: 'Kanit', sans-serif;
+
+  a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 48px;
+    @include functions.dc(colors.$sideMenuBackground);
+    display: block;
+    transition: 0.3s;
+
+    &:hover {
+      color: colors.$menuHover;
+    }
+  }
+
+  #closeBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  &--width0 {
+    @extend #sideNav;
+    width: 0px;
+  }
+  &--width250 {
+    @extend #sideNav;
+    width: 100%;
+  }
+}
+
+#fullMenu {
+  display: flex;
+  height: 173px;
+  justify-content: flex-end;
+
+  #items {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+    padding-top: 72px;
+    font-size: 22px;
+    margin: 0 14px;
+  }
+}

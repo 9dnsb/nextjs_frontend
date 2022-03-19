@@ -1,0 +1,28 @@
+@import '../../node_modules/include-media/dist/include-media';
+$breakpoints: (
+  phone: 320px,
+  phone2: 500px,
+  phone3: 650px,
+  tablet: 768px,
+  desktop: 1024px,
+);
+
+@include media('>phone3') {
+  .container {
+    max-width: 800px;
+    padding: 0 1em;
+
+    #navBarSmall {
+      display: none;
+    }
+    #fullMenu {
+      display: flex;
+    }
+  }
+}
+
+@include media('<phone3') {
+  #fullMenu {
+    display: none !important;
+  }
+}

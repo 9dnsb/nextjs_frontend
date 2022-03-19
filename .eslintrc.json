@@ -20,10 +20,7 @@
   ],
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "paths": ["src"]
-      }
+      "typescript": {}
     }
   },
   "parserOptions": {
@@ -33,7 +30,7 @@
       "jsx": true
     }
   },
-  "ignorePatterns": ["node_modules/*"],
+  "ignorePatterns": ["node_modules/*", ".next/"],
   "plugins": [
     "testing-library",
     "jest-dom",
@@ -70,7 +67,7 @@
     "max-lines-per-function": ["warn", 50],
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "import/extensions": ["error", "never"],
-    "import/no-unresolved": 2,
+    "import/no-unresolved": 0,
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "sort-imports": "off",

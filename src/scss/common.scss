@@ -1,0 +1,32 @@
+@use 'colors';
+
+body {
+  margin: unset;
+  font-family: 'Lato', sans-serif;
+  background-color: colors.$backgroundColor;
+  color: colors.$mainFontColor;
+}
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
+
+  &:hover {
+    color: colors.$menuHover;
+  }
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.containerMainContent {
+  padding: 60px 20px;
+}
+
+button {
+  all: unset;
+}
