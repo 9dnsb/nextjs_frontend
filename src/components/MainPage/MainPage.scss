@@ -1,16 +1,37 @@
+@import '../../../node_modules/rfs/scss';
+
+$gap: 60px;
+
 .containerMainContent {
   display: grid;
 
-  grid-column-gap: 40px;
-  grid-row-gap: 40px;
-
+  grid-column-gap: $gap;
+  grid-row-gap: $gap;
+  font-family: 'Kanit', sans-serif;
   h1 {
-    font-family: 'Kanit', sans-serif;
-    font-size: 52px;
     margin: unset;
+    @include font-size(4rem);
+  }
+  #mainALink {
+    font-size: 24px;
+    margin: unset;
+    line-height: 30px;
+    font-weight: 400;
   }
   h2 {
     font-weight: unset;
     margin: unset;
+  }
+  h3 {
+    font-weight: 1;
+    color: #9b9ca1;
+  }
+  p {
+    color: #72777c;
+    font-size: 16px;
+  }
+  #ViewRecipeALink {
+    text-decoration: underline;
+    color: #303336;
   }
 }

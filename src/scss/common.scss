@@ -1,4 +1,5 @@
 @use 'colors';
+@import '../../node_modules/rfs/scss';
 
 body {
   margin: unset;
@@ -24,7 +25,10 @@ a {
 }
 
 .containerMainContent {
-  padding: 60px 20px;
+  @include padding-top(5rem);
+  @include padding-right(1rem);
+  @include padding-bottom(5rem);
+  @include padding-left(1rem);
 }
 
 button {

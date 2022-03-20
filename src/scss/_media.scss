@@ -1,4 +1,5 @@
 @import '../../node_modules/include-media/dist/include-media';
+@import '../../node_modules/rfs/scss';
 $breakpoints: (
   phone: 320px,
   phone2: 500px,
@@ -9,7 +10,8 @@ $breakpoints: (
 
 @include media('>phone3') {
   .container {
-    max-width: 800px;
+    max-width: 1248px;
+
     padding: 0 1em;
 
     #navBarSmall {
@@ -20,6 +22,9 @@ $breakpoints: (
     }
     .containerMainContent {
       grid-template-columns: repeat(2, 1fr) !important;
+      h2 {
+        padding-top: 5px;
+      }
     }
   }
 }
