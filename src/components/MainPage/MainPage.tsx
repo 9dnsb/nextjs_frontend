@@ -1,10 +1,21 @@
+/* eslint-disable max-lines-per-function */
+import axios from 'axios'
 import dateFormat from 'dateformat'
 import Image from 'next/image'
 import Link from 'next/link'
+import useSWR from 'swr'
 
-import { RecipeArray } from '../RecipesTypes'
+import { shimmer, toBase64 } from '@/components/imgBackgroundSVG'
+import { RecipeArray } from '@/components/RecipesTypes'
 
 function MainPage({ recipes }: { recipes: RecipeArray }) {
+  const url = `${process.env.MY_HEROKU_URL}/api/blogs/?populate=*`
+  const fetcher = () => axios.get(url).then((res) => res.data)
+  const { data } = useSWR<RecipeArray>(url, fetcher, {
+    fallbackData: recipes,
+    refreshInterval: 30000,
+  })
+
   return (
     <>
       <div>
@@ -17,7 +28,7 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
         </h2>
       </div>
       <>
-        {recipes.data.map((recipe) => (
+        {data.data.map((recipe) => (
           <div key={recipe.id}>
             <div id="img">
               <Link href={`/recipes/${recipe.id}`} passHref>
@@ -27,6 +38,10 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
                     layout="responsive"
                     width="92px"
                     height="115px"
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(700, 475),
+                    )}`}
                   />
                 </a>
               </Link>

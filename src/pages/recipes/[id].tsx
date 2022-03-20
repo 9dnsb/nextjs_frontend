@@ -1,16 +1,15 @@
 import axios from 'axios'
 import useSWR from 'swr'
 
-import { RecipeSinglePost } from '@/components/RecipesTypes'
+import { Recipe, RecipeSinglePost } from '@/components/RecipesTypes'
 
 function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
   const url = `${process.env.MY_HEROKU_URL}/api/blogs/${recipe.data.id}/?populate=*`
   const fetcher = () => axios.get(url).then((res) => res.data)
-  const { data } = useSWR<RecipeSinglePost>(
-    `${process.env.MY_HEROKU_URL}/api/blogs/${recipe.data.id}/?populate=*`,
-    fetcher,
-    { fallbackData: recipe, refreshInterval: 30000 },
-  )
+  const { data } = useSWR<RecipeSinglePost>(url, fetcher, {
+    fallbackData: recipe,
+    refreshInterval: 30000,
+  })
 
   return (
     <div>
@@ -21,7 +20,7 @@ function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
 
 export default RecipePage
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: Recipe }) {
   const postRes = await axios.get(
     `${process.env.MY_HEROKU_URL}/api/blogs/${params.id}/?populate=*`,
   )
@@ -36,7 +35,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const postsRes = await axios.get(`${process.env.MY_HEROKU_URL}/api/blogs`)
 
-  const paths = postsRes.data.data.map((post) => {
+  const paths = postsRes.data.data.map((post: Recipe) => {
     return { params: { id: post.id.toString() } }
   })
   return {
