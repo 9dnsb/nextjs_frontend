@@ -19,46 +19,49 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
   const linkHref = (recipe: Recipe) => `/recipes/${recipe.id}`
 
   return (
-    <div className="containerMainContent">
-      <NextSeo
-        title={"David's Blog"}
-        description="A copy of a blog using Strapi"
-      />
-      <div>
-        <h1>Latest and Greatest Recipes and More</h1>
-      </div>
-      <div>
-        <h2>
-          This is a copy of{' '}
-          <a
-            href="https://www.littlefatboy.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            littlefatboy.com
-          </a>
-          . Hi! Find my latest recipes, tutorials, photography, and more below.
-          You will find instructions tips and videos in each recipe.
-        </h2>
-      </div>
-      {data.data.map((recipe) => (
-        <div key={recipe.id}>
-          <div id="img">
-            <DisplayRecipeImage
-              imgUrl={recipe.attributes.image.data.attributes.url}
-            />
-          </div>
-          <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
+    <main>
+      <div className="containerMainContent">
+        <NextSeo
+          title={"David's Blog"}
+          description="A copy of a blog using Strapi"
+        />
 
-          <a id="mainALink">{recipe.attributes.title}</a>
-
-          <p>{recipe.attributes.description_main}</p>
-          <Link href={linkHref(recipe)}>
-            <a id="ViewRecipeALink">View Recipe</a>
-          </Link>
+        <div>
+          <h1>Latest and Greatest Recipes and More</h1>
         </div>
-      ))}
-    </div>
+        <div>
+          <h2>
+            This is a copy of{' '}
+            <a
+              href="https://www.littlefatboy.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              littlefatboy.com (opens in new window)
+            </a>
+            . Hi! Find my latest recipes, tutorials, photography, and more
+            below. You will find instructions tips and videos in each recipe.
+          </h2>
+        </div>
+        {data.data.map((recipe) => (
+          <div key={recipe.id}>
+            <div>
+              <DisplayRecipeImage
+                imgUrl={recipe.attributes.image.data.attributes.url}
+              />
+            </div>
+            <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
+
+            <a className="mainALink">{recipe.attributes.title}</a>
+
+            <p>{recipe.attributes.description_main}</p>
+            <Link href={linkHref(recipe)}>
+              <a className="ViewRecipeALink">View Recipe</a>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </main>
   )
 }
 

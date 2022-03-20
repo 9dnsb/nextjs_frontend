@@ -1,8 +1,9 @@
+/* eslint-disable max-lines-per-function */
 import { NextSeo } from 'next-seo'
 
 function About() {
   return (
-    <>
+    <main>
       <NextSeo
         title="About"
         description="A copy of a blog using Strapi. About Page"
@@ -26,7 +27,7 @@ function About() {
             target="_blank"
             rel="noreferrer"
           >
-            Bulletproof React.{' '}
+            Bulletproof React (opens in new window).{' '}
           </a>
           You can view the frontend Next.js code{' '}
           <a
@@ -34,19 +35,22 @@ function About() {
             target="_blank"
             rel="noreferrer"
           >
-            on my Github here.{' '}
+            on my Github here (opens in new window).{' '}
           </a>
-          You can view the backend Strapi code{' '}
+          You can view the backend Strapi code (opens in new window){' '}
           <a
             href="https://github.com/9dnsb/strapi_backend"
             target="_blank"
             rel="noreferrer"
           >
-            on my Github here.{' '}
-          </a>
+            on my Github here (opens in new window).
+          </a>{' '}
+          I have tried to make my website as accessibile as possible. I have run
+          accessibility tests using WebAIM and IBM Equal Access Accessibility
+          Checker and have removed all critical issues.
         </h1>
       </div>
-    </>
+    </main>
   )
 }
 
