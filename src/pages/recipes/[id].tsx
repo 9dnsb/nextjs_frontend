@@ -4,8 +4,8 @@ import useSWR from 'swr'
 import { RecipeSinglePost } from '@/components/RecipesTypes'
 
 function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
-  const fetcher = (...args: Parameters<typeof fetch>) =>
-    fetch(...args).then((response) => response.json())
+  const url = `${process.env.MY_HEROKU_URL}/api/blogs/${recipe.data.id}/?populate=*`
+  const fetcher = () => axios.get(url).then((res) => res.data)
   const { data } = useSWR<RecipeSinglePost>(
     `${process.env.MY_HEROKU_URL}/api/blogs/${recipe.data.id}/?populate=*`,
     fetcher,

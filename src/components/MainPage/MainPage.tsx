@@ -19,13 +19,18 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
       <>
         {recipes.data.map((recipe) => (
           <div key={recipe.id}>
-            <Image
-              src={recipe.attributes.image.data.attributes.url}
-              layout="responsive"
-              width="92px"
-              height="115px"
-            />
-
+            <div id="img">
+              <Link href={`/recipes/${recipe.id}`} passHref>
+                <a>
+                  <Image
+                    src={recipe.attributes.image.data.attributes.url}
+                    layout="responsive"
+                    width="92px"
+                    height="115px"
+                  />
+                </a>
+              </Link>
+            </div>
             <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
             <Link href={`/recipes/${recipe.id}`}>
               <a id="mainALink">{recipe.attributes.title}</a>

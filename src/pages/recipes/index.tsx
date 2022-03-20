@@ -16,7 +16,6 @@ export async function getStaticProps() {
   const postRes = await axios.get(
     `${process.env.MY_HEROKU_URL}/api/blogs/?populate=*`,
   )
-  console.log('here2', postRes.data)
   return {
     props: {
       recipes: postRes.data,
