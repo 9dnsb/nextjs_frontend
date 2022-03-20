@@ -9,10 +9,14 @@
 
   #menuButton {
     justify-content: center;
+
     color: white;
     cursor: pointer;
     &:hover {
       color: colors.$menuHover;
+    }
+    svg {
+      background-color: black !important;
     }
   }
 }
