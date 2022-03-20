@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-function Recipes({ recipes }) {
+import { RecipeArray } from '@/components/RecipesTypes'
+
+function Recipes({ recipes }: { recipes: RecipeArray }) {
   return (
     <>
       {recipes.data.map((recipe) => (

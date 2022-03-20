@@ -1,8 +1,9 @@
 import axios from 'axios'
 
 import MainPage from '@/components/MainPage/MainPage'
+import { RecipeArray } from '@/components/RecipesTypes'
 
-function Home({ recipes }) {
+function Home({ recipes }: { recipes: RecipeArray }) {
   return <MainPage recipes={recipes} />
 }
 
