@@ -1,0 +1,12 @@
+@import '../../node_modules/rfs/scss';
+
+#aboutContainer {
+  @include padding-top(5rem);
+  @include padding-right(20rem);
+  @include padding-bottom(5rem);
+  @include padding-left(20rem);
+
+  a {
+    text-decoration: underline;
+  }
+}

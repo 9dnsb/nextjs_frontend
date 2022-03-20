@@ -24,11 +24,15 @@ a {
   margin: 0 auto;
 }
 
-.containerMainContent {
+.containerPadding {
   @include padding-top(5rem);
   @include padding-right(1rem);
   @include padding-bottom(5rem);
   @include padding-left(1rem);
+}
+
+.containerMainContent {
+  @extend .containerPadding;
 }
 
 button {
