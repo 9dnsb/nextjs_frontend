@@ -11,6 +11,8 @@
 
 ### 🏠 [Homepage](https://www.davidblatt.ca/)
 
+This is a blog website made using Strapi and Next.js. All the style is custom made with Sass. Strapi has been deployed to Heroku. The site uses Axios to make network requests. Markdown-it is used to display the markdown from Strapi. Images are uploaded using Cloudinary. The site uses Typescript and I have tried to follow many of the coding principles from Bulletproof React.
+
 ## Author
 
 👤 **David Blatt**
