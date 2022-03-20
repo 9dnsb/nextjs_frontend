@@ -27,6 +27,11 @@ $breakpoints: (
       }
     }
   }
+  #recipePage #mainContent {
+    p {
+      padding-left: 52%;
+    }
+  }
 }
 
 @include media('<phone3') {

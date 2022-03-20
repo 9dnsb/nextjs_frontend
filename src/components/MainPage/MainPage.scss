@@ -17,6 +17,9 @@ $gap: 60px;
     margin: unset;
     line-height: 30px;
     font-weight: 400;
+    &:hover {
+      color: black;
+    }
   }
   h2 {
     font-weight: unset;
@@ -24,7 +27,7 @@ $gap: 60px;
   }
   h3 {
     font-weight: 1;
-    color: #9b9ca1;
+    color: #493c3c;
   }
   p {
     color: #72777c;
@@ -34,5 +37,8 @@ $gap: 60px;
   #ViewRecipeALink {
     text-decoration: underline;
     color: #303336;
+    &:hover {
+      color: #656c74;
+    }
   }
 }

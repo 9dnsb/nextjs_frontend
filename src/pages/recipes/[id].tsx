@@ -1,6 +1,10 @@
+/* eslint-disable react/no-danger */
 import axios from 'axios'
+import MarkdownIt from 'markdown-it'
+import { NextSeo } from 'next-seo'
 import useSWR from 'swr'
 
+import DisplayRecipeImage from '@/components/DisplayRecipeImage'
 import { Recipe, RecipeSinglePost } from '@/components/RecipesTypes'
 
 function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
@@ -10,10 +14,32 @@ function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
     fallbackData: recipe,
     refreshInterval: 30000,
   })
+  const md = new MarkdownIt()
+  // eslint-disable-next-line testing-library/render-result-naming-convention
+  const htmlContent = md.render(data.data.attributes.posting)
 
   return (
-    <div>
-      <div>{data.data.attributes.title}</div>
+    <div id="recipePage">
+      <NextSeo
+        title={data.data.attributes.title}
+        description={data.data.attributes.description_main}
+      />
+      <div className="containerMainContent">
+        <div id="recipePageInfo">
+          <h1>{data.data.attributes.title}</h1>
+          <h2 id="descriptionMain">{data.data.attributes.description_main}</h2>
+          <h2 id="yield">{data.data.attributes.description_yield}</h2>
+        </div>
+        <div>
+          <DisplayRecipeImage
+            imgUrl={data.data.attributes.image.data.attributes.url}
+          />
+        </div>
+      </div>
+      <section
+        id="mainContent"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
     </div>
   )
 }

@@ -26,7 +26,12 @@ function SideMenu() {
         </a>
         {navItems(closeSideMenu)}
       </div>
-      <button id="menuButton" type="button" onClick={openSideMenu}>
+      <button
+        aria-label="menu"
+        id="menuButton"
+        type="button"
+        onClick={openSideMenu}
+      >
         <AiOutlineMenu size="24" />
       </button>
     </div>

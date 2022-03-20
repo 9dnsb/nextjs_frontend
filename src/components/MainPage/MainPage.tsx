@@ -1,12 +1,12 @@
-/* eslint-disable max-lines-per-function */
+// eslint-disable-next-line simple-import-sort/imports
 import axios from 'axios'
 import dateFormat from 'dateformat'
-import Image from 'next/image'
+import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import useSWR from 'swr'
 
-import { shimmer, toBase64 } from '@/components/imgBackgroundSVG'
-import { RecipeArray } from '@/components/RecipesTypes'
+import DisplayRecipeImage from '@/components/DisplayRecipeImage'
+import { Recipe, RecipeArray } from '@/components/RecipesTypes'
 
 function MainPage({ recipes }: { recipes: RecipeArray }) {
   const url = `${process.env.MY_HEROKU_URL}/api/blogs/?populate=*`
@@ -15,9 +15,14 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
     fallbackData: recipes,
     refreshInterval: 30000,
   })
+  const linkHref = (recipe: Recipe) => `/recipes/${recipe.id}`
 
   return (
-    <>
+    <div className="containerMainContent">
+      <NextSeo
+        title={"David's Blog"}
+        description="A copy of a blog using Strapi"
+      />
       <div>
         <h1>Latest and Greatest Recipes and More</h1>
       </div>
@@ -27,37 +32,24 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
           You will find instructions tips and videos in each recipe.
         </h2>
       </div>
-      <>
-        {data.data.map((recipe) => (
-          <div key={recipe.id}>
-            <div id="img">
-              <Link href={`/recipes/${recipe.id}`} passHref>
-                <a>
-                  <Image
-                    src={recipe.attributes.image.data.attributes.url}
-                    layout="responsive"
-                    width="92px"
-                    height="115px"
-                    placeholder="blur"
-                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                      shimmer(700, 475),
-                    )}`}
-                  />
-                </a>
-              </Link>
-            </div>
-            <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
-            <Link href={`/recipes/${recipe.id}`}>
-              <a id="mainALink">{recipe.attributes.title}</a>
-            </Link>
-            <p>{recipe.attributes.description_main}</p>
-            <Link href={`/recipes/${recipe.id}`}>
-              <a id="ViewRecipeALink">View Recipe</a>
-            </Link>
+      {data.data.map((recipe) => (
+        <div key={recipe.id}>
+          <div id="img">
+            <DisplayRecipeImage
+              imgUrl={recipe.attributes.image.data.attributes.url}
+            />
           </div>
-        ))}
-      </>
-    </>
+          <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
+
+          <a id="mainALink">{recipe.attributes.title}</a>
+
+          <p>{recipe.attributes.description_main}</p>
+          <Link href={linkHref(recipe)}>
+            <a id="ViewRecipeALink">View Recipe</a>
+          </Link>
+        </div>
+      ))}
+    </div>
   )
 }
 
