@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 // eslint-disable-next-line simple-import-sort/imports
 import axios from 'axios'
 import dateFormat from 'dateformat'
@@ -28,7 +29,15 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
       </div>
       <div>
         <h2>
-          Hi! Find my latest recipes, tutorials, photography, and more below.
+          This is a copy of{' '}
+          <a
+            href="https://www.littlefatboy.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            littlefatboy.com
+          </a>
+          . Hi! Find my latest recipes, tutorials, photography, and more below.
           You will find instructions tips and videos in each recipe.
         </h2>
       </div>
