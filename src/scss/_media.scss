@@ -18,6 +18,9 @@ $breakpoints: (
     #fullMenu {
       display: flex;
     }
+    .containerMainContent {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
   }
 }
 

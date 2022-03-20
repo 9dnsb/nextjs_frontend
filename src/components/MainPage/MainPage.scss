@@ -1,15 +1,16 @@
 .containerMainContent {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(7, 1fr);
+
   grid-column-gap: 40px;
   grid-row-gap: 40px;
 
   h1 {
     font-family: 'Kanit', sans-serif;
     font-size: 52px;
+    margin: unset;
   }
   h2 {
     font-weight: unset;
+    margin: unset;
   }
 }
