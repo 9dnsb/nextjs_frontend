@@ -20,26 +20,30 @@ function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
 
   return (
     <div id="recipePage">
-      <NextSeo
-        title={data.data.attributes.title}
-        description={data.data.attributes.description_main}
-      />
-      <div className="containerMainContent">
-        <div id="recipePageInfo">
-          <h1>{data.data.attributes.title}</h1>
-          <h2 id="descriptionMain">{data.data.attributes.description_main}</h2>
-          <h2 id="yield">{data.data.attributes.description_yield}</h2>
+      <main>
+        <NextSeo
+          title={data.data.attributes.title}
+          description={data.data.attributes.description_main}
+        />
+        <div className="containerMainContent">
+          <div id="recipePageInfo">
+            <h1>{data.data.attributes.title}</h1>
+            <h2 id="descriptionMain">
+              {data.data.attributes.description_main}
+            </h2>
+            <h2 id="yield">{data.data.attributes.description_yield}</h2>
+          </div>
+          <div>
+            <DisplayRecipeImage
+              imgUrl={data.data.attributes.image.data.attributes.url}
+            />
+          </div>
         </div>
-        <div>
-          <DisplayRecipeImage
-            imgUrl={data.data.attributes.image.data.attributes.url}
-          />
-        </div>
-      </div>
-      <section
-        id="mainContent"
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-      />
+        <section
+          id="mainContent"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
+      </main>
     </div>
   )
 }
