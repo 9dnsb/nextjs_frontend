@@ -39,7 +39,7 @@
     "@testing-library/user-event": "^14.2.0",
     "@tsconfig/next": "^1.0.2",
     "@types/dateformat": "^5.0.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^28.1.1",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "17.0.41",
     "@types/react": "18.0.12",
