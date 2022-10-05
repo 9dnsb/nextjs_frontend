@@ -15,7 +15,7 @@
     "@fontsource/kanit": "^4.5.10",
     "@fontsource/lato": "^4.5.10",
     "@fontsource/noto-sans-lydian": "^4.5.8",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "bootstrap": "^5.2.2",
     "dateformat": "^5.0.3",
     "dotenv": "^16.0.3",
