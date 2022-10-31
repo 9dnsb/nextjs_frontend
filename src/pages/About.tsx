@@ -9,11 +9,11 @@ function About() {
         description="A copy of a blog using Strapi. About Page"
       />
       <div id="aboutContainer">
-        <style jsx global>{`
+        {/* <style jsx global>{`
           * {
             background-color: #ffbc00;
           }
-        `}</style>
+        `}</style> */}
         <h1>
           This is a blog website made using Strapi and Next.js. All the style is
           custom made with Sass. Strapi has been deployed to Heroku. The site
