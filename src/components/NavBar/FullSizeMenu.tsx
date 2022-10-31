@@ -9,8 +9,8 @@ function FullSizeMenu() {
       <Image
         id="logo"
         src="/assets/img/logo.png"
-        width="200px"
-        height="200px"
+        width={200}
+        height={200}
         alt=""
       />
       <div id="items">
