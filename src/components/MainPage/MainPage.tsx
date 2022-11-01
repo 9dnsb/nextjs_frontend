@@ -4,6 +4,7 @@ import axios from 'axios'
 import dateFormat from 'dateformat'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+import { HydrationProvider, Server, Client } from 'react-hydration-provider'
 import useSWR from 'swr'
 
 import DisplayRecipeImage from '@/components/DisplayRecipeImage'
@@ -19,49 +20,57 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
   const linkHref = (recipe: Recipe) => `/recipes/${recipe.id}`
 
   return (
-    <main>
-      <div className="containerMainContent">
-        <NextSeo
-          title={"David's Blog"}
-          description="A copy of a blog using Strapi"
-        />
+    <HydrationProvider>
+      <main>
+        <Server>
+          <p>Loading...</p>
+        </Server>
+        <Client>
+          <div className="containerMainContent">
+            <NextSeo
+              title={"David's Blog"}
+              description="A copy of a blog using Strapi"
+            />
 
-        <div>
-          <h1>Latest and Greatest Recipes and More</h1>
-        </div>
-        <div>
-          <h2>
-            This website was inspired by{' '}
-            <a
-              href="https://www.littlefatboy.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              littlefatboy.com (opens in new window)
-            </a>
-            . Hi! Find my latest recipes, tutorials, photography, and more
-            below. You will find instructions tips and videos in each recipe.
-          </h2>
-        </div>
-        {data.data.map((recipe) => (
-          <div key={recipe.id}>
             <div>
-              <DisplayRecipeImage
-                imgUrl={recipe.attributes.image.data.attributes.url}
-              />
+              <h1>Latest and Greatest Recipes and More</h1>
             </div>
-            <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
+            <div>
+              <h2>
+                This website was inspired by{' '}
+                <a
+                  href="https://www.littlefatboy.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  littlefatboy.com (opens in new window)
+                </a>
+                . Hi! Find my latest recipes, tutorials, photography, and more
+                below. You will find instructions tips and videos in each
+                recipe.
+              </h2>
+            </div>
+            {data.data.map((recipe) => (
+              <div key={recipe.id}>
+                <div>
+                  <DisplayRecipeImage
+                    imgUrl={recipe.attributes.image.data.attributes.url}
+                  />
+                </div>
+                <h3>{dateFormat(recipe.attributes.publishedAt, 'fullDate')}</h3>
 
-            <a className="mainALink">{recipe.attributes.title}</a>
+                <a className="mainALink">{recipe.attributes.title}</a>
 
-            <p>{recipe.attributes.description_main}</p>
-            <Link href={linkHref(recipe)} className="ViewRecipeALink">
-              View Recipe
-            </Link>
+                <p>{recipe.attributes.description_main}</p>
+                <Link href={linkHref(recipe)} className="ViewRecipeALink">
+                  View Recipe
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </main>
+        </Client>
+      </main>
+    </HydrationProvider>
   )
 }
 
