@@ -4,17 +4,23 @@ import '@fontsource/lato'
 import '@fontsource/kanit/400.css'
 
 import type { AppProps } from 'next/app'
+import { Client, HydrationProvider, Server } from 'react-hydration-provider'
 
 import NavBar from '@/components/NavBar/NavBar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (
-    <div className="container">
-      <NavBar />
-
-      <Component {...pageProps} />
-    </div>
+    <HydrationProvider>
+      <div className="container">
+        <Server>
+          <NavBar />
+        </Server>
+        <Client>
+          <Component {...pageProps} />
+        </Client>
+      </div>
+    </HydrationProvider>
   )
 }
 
