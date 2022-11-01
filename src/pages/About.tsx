@@ -14,7 +14,8 @@ function About() {
             background-color: #ffbc00;
           }
         `}</style> */}
-        <h1>
+        <h1>The process I used:</h1>
+        <h2>
           This is a blog website made using Strapi and Next.js. All the style is
           custom made with Sass. Strapi has been deployed to Heroku. The site
           uses Axios to make network requests. SWR React Hook is used for data
@@ -48,7 +49,7 @@ function About() {
           I have tried to make my website as accessibile as possible. I have run
           accessibility tests using WebAIM and IBM Equal Access Accessibility
           Checker and have removed all critical issues.
-        </h1>
+        </h2>
       </div>
     </main>
   )
