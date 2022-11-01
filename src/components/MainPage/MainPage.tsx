@@ -31,7 +31,7 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
         </div>
         <div>
           <h2>
-            This is a copy of{' '}
+            This is website was inspired by{' '}
             <a
               href="https://www.littlefatboy.com/"
               target="_blank"
