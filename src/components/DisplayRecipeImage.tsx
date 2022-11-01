@@ -8,8 +8,8 @@ function DisplayRecipeImage({ imgUrl }: { imgUrl: string }) {
     <a>
       <Image
         src={imgUrl}
-        width={92}
-        height={115}
+        width={276}
+        height={345}
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
         alt=""

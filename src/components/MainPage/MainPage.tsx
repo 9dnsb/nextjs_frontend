@@ -55,8 +55,8 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
             <a className="mainALink">{recipe.attributes.title}</a>
 
             <p>{recipe.attributes.description_main}</p>
-            <Link href={linkHref(recipe)}>
-              <a className="ViewRecipeALink">View Recipe</a>
+            <Link href={linkHref(recipe)} className="ViewRecipeALink">
+              View Recipe
             </Link>
           </div>
         ))}

@@ -5,15 +5,15 @@ import { NavMenuItems } from '@/components/NavBar/NavTypes'
 const navItems = (closeSideMenu: () => void) => (
   <>
     {NavMenuItems.map((navItem) => (
-      <Link href={navItem.link} key={navItem.name}>
-        <a
-          role="button"
-          tabIndex={0}
-          onClick={closeSideMenu}
-          onKeyPress={closeSideMenu}
-        >
-          {navItem.name}
-        </a>
+      <Link
+        href={navItem.link}
+        key={navItem.name}
+        role="button"
+        tabIndex={0}
+        onClick={closeSideMenu}
+        onKeyPress={closeSideMenu}
+      >
+        {navItem.name}
       </Link>
     ))}
   </>

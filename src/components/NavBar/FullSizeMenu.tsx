@@ -15,15 +15,15 @@ function FullSizeMenu() {
       />
       <div id="items">
         {NavMenuItems.map((navItem) => (
-          <Link href={navItem.link} key={navItem.name}>
-            <a
-              role="button"
-              tabIndex={0}
-              onClick={() => {}}
-              onKeyPress={() => {}}
-            >
-              {navItem.name}
-            </a>
+          <Link
+            href={navItem.link}
+            key={navItem.name}
+            role="button"
+            tabIndex={0}
+            onClick={() => {}}
+            onKeyPress={() => {}}
+          >
+            {navItem.name}
           </Link>
         ))}
       </div>
