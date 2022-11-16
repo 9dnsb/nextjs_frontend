@@ -21,7 +21,7 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
 
   const url = `${process.env.MY_HEROKU_URL}/api/blogs/?populate=*`
   const fetcher = () => axios.get(url).then((res) => res.data)
-  const { data } = useSWR<RecipeArray>(url, fetcher, {
+  const { data, error } = useSWR<RecipeArray>(url, fetcher, {
     fallbackData: recipes,
     refreshInterval: 30000,
   })
@@ -29,6 +29,8 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
 
   const [loading] = useState(true)
   const [color] = useState('#ffffff')
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
   return (
     <HydrationProvider>
       <main>

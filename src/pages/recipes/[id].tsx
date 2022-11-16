@@ -10,11 +10,14 @@ import { Recipe, RecipeSinglePost } from '@/components/RecipesTypes'
 function RecipePage({ recipe }: { recipe: RecipeSinglePost }) {
   const url = `${process.env.MY_HEROKU_URL}/api/blogs/${recipe.data.id}/?populate=*`
   const fetcher = () => axios.get(url).then((res) => res.data)
-  const { data } = useSWR<RecipeSinglePost>(url, fetcher, {
+  const { data, error } = useSWR<RecipeSinglePost>(url, fetcher, {
     fallbackData: recipe,
     refreshInterval: 30000,
   })
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
   const md = new MarkdownIt()
+  // eslint-disable-next-line testing-library/render-result-naming-convention
   // eslint-disable-next-line testing-library/render-result-naming-convention
   const htmlContent = md.render(data.data.attributes.posting)
 
