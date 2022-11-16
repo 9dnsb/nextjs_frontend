@@ -4,13 +4,21 @@ import axios from 'axios'
 import dateFormat from 'dateformat'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+import { useState, CSSProperties } from 'react'
 import { HydrationProvider, Server, Client } from 'react-hydration-provider'
+import ClipLoader from 'react-spinners/ClipLoader'
 import useSWR from 'swr'
 
 import DisplayRecipeImage from '@/components/DisplayRecipeImage'
 import { Recipe, RecipeArray } from '@/components/RecipesTypes'
 
 function MainPage({ recipes }: { recipes: RecipeArray }) {
+  const override: CSSProperties = {
+    display: 'block',
+    margin: '0 auto',
+    borderColor: 'black',
+  }
+
   const url = `${process.env.MY_HEROKU_URL}/api/blogs/?populate=*`
   const fetcher = () => axios.get(url).then((res) => res.data)
   const { data } = useSWR<RecipeArray>(url, fetcher, {
@@ -19,11 +27,20 @@ function MainPage({ recipes }: { recipes: RecipeArray }) {
   })
   const linkHref = (recipe: Recipe) => `/recipes/${recipe.id}`
 
+  const [loading] = useState(true)
+  const [color] = useState('#ffffff')
   return (
     <HydrationProvider>
       <main>
         <Server>
-          <p>Loading...</p>
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </Server>
         <Client>
           <div className="containerMainContent">
